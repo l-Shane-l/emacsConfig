@@ -37,6 +37,16 @@
 
 (global-semanticdb-minor-mode 1)
 
+(add-to-list 'load-path "~/emacs_plugins/markdown-mode")
+(autoload 'markdown-mode "markdown-mode"
+	  "Major mode for editing Markdown file" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" .markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(autoload 'gfm-mode "markdown-mode"
+	  "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
 (add-to-list 'load-path "~/emacs_plugins/all-the-icons")
 (require 'all-the-icons)
 
@@ -53,6 +63,15 @@
 (tool-bar-mode -1)
 
 (semantic-mode 1)
+
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+
 
 (semantic-add-system-include "/usr/bin/clang")
 (require 'projectile)
@@ -81,7 +100,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (neotree flycheck-irony flycheck irony nyan-mode zygospore helm ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent clean-aindent-mode anzu))))
+    (edit-indirect markdown-mode neotree flycheck-irony flycheck irony nyan-mode zygospore helm ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent clean-aindent-mode anzu))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
